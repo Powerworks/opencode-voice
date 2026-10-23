@@ -1,0 +1,25 @@
+[Unit]
+Description=opencode-voice — local voice dictation bridge for OpenCode (whisper.cpp, no cloud)
+Documentation=https://github.com/mathew-cf/opencode-voice
+After=pipewire-pulse.service
+Requires=pipewire-pulse.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# Wrapper sources ~/.config/opencode-voice/opencode-voice.conf and discovers
+# the OpenCode service port automatically.
+ExecStart=/home/williampower/.local/bin/opencode-voice-run
+Restart=on-failure
+RestartSec=3
+# Whisper on 4 cores: be polite. Dropped CPU priority fills the dictation
+# latency gap without user-visible lag.
+Nice=5
+IOSchedulingClass=idle
+# NOTE: no SupplementaryGroups — this box's user manager refuses setgroups()
+# with EPERM, so requesting input here breaks the unit at exec. evdev access
+# for the GLOBAL hotkey comes from the user's ambient groups via the desktop
+# session (opencode-voice-global.desktop), which works in practice.
+
+[Install]
+WantedBy=default.target

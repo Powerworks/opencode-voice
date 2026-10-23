@@ -1,0 +1,6 @@
+# The -sys crate ships pregenerated bindings (src/bindings.rs) generated in an
+# environment where bindgen resolves whisper.h correctly. On modern libclang
+# (Fedora 44, LLVM 22), bindgen instead renders whisper_full_params opaque.
+# Use the bundled bindings; layout is verified by the crate's own tests.
+[env]
+WHISPER_DONT_GENERATE_BINDINGS = "1"

@@ -1,5 +1,19 @@
 # opencode-voice
 
+> ## ⚠️ Fork note (Powerworks / Fedora Workstation)
+>
+> This fork adds a Fedora layer:
+> - **libclang/LLVM 22 + bindgen 0.69/0.71 failure work-around**: modern
+>   libclang renders `whisper_full_params` opaque; `.cargo/config.toml`
+>   forces the crate to use its shipped `src/bindings.rs` instead of
+>   regenerating (layout-checked by the crate's own tests).
+> - the vendored `whisper.h` renames two anonymous C structs
+>   (`greedy`/`beam_search`) so a future bindgen run also works; layout-identical.
+> - a systemd user service + GNOME launchers; a wrapper that auto-discovers the
+>   OpenCode service port; `tiny.en` as default model for 4-core boxes.
+> Full setup: `docs/FEDORA-SETUP.md`. Tuning surface: `docs/OPTIMIZATION.md`.
+> Uninstall with `scripts/uninstall-fedora.sh`. Everything below is unchanged upstream.
+
 **Voice control for [OpenCode](https://opencode.ai)**
 
 Everything runs on your machine — no cloud services, no API keys, no audio leaves your device.

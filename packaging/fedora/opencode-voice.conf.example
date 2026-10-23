@@ -1,0 +1,17 @@
+# opencode-voice configuration for Fedora Workstation.
+# Installed to ~/.config/opencode-voice/opencode-voice.conf by
+# scripts/install-fedora.sh and sourced by scripts/opencode-voice-run.sh.
+# The installed copy is chmod 600 — never commit it.
+
+# Port of the OpenCode background service. Leave empty to auto-discover at
+# every launch (recommended — the service picks a new port each restart).
+OPENCODE_VOICE_PORT=
+
+# Password for the OpenCode service API. AUTO-FILLED at install time from
+# ~/.config/opencode/service.json by scripts/install-fedora.sh.
+OPENCODE_SERVER_PASSWORD=
+
+# Whisper model: tiny.en | base.en | small.en | tiny | base | small
+# tiny.en is the default on this 4-core machine: snappy dictation, ~75 MB.
+# Upgrade to base.en (~142 MB) if accuracy suffers.
+OPENCODE_VOICE_MODEL=tiny.en

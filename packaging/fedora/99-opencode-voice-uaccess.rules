@@ -1,0 +1,11 @@
+# opencode-voice — hotkey input ACL
+#
+# Grant the active-seat user rw on /dev/input/event* so the global hotkey
+# listener works even from a rootless systemd --user process, where
+# setgroups() (SupplementaryGroups=) is not permitted (no CAP_SETGID).
+# The `uaccess` tag makes systemd-logind attach `user:<uid>:rw` to the
+# device while a session is active.
+#
+# NOTE: /dev/input/event* are already root:input crw-rw----; this rule only
+# adds the user ACL, network-accessible group perms remain untouched.
+ACTION=="add|change", SUBSYSTEM=="input", KERNEL=="event[0-9]*", TAG+="uaccess"

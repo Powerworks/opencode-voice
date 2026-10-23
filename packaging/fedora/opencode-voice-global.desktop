@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenCode Voice (Global Hotkey)
+GenericName=Voice Dictation for OpenCode
+Comment=Global hotkey (hold RIGHT CTRL) works from any window. Local Whisper, no cloud.
+Exec=/home/williampower/.local/bin/opencode-voice-run --hotkey right_ctrl --no-push-to-talk
+Terminal=true
+StartupNotify=true
+Categories=Utility;Voice;
+Keywords=voice;dictation;opencode;whisper;
+Icon=audio-input-microphone

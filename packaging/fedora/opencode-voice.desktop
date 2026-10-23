@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenCode Voice
+GenericName=Voice Dictation for OpenCode
+Comment=Hold SPACE to record, release to send to OpenCode. Local Whisper, no cloud.
+Exec=/home/williampower/.local/bin/opencode-voice-run
+Terminal=true
+StartupNotify=true
+Categories=Utility;Voice;
+Keywords=voice;dictation;opencode;whisper;
+Icon=audio-input-microphone
